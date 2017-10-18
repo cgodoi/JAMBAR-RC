@@ -1,0 +1,17 @@
+<template name="MainLayout">
+	{{> Header}}
+
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		{{> SideNav}}
+
+		<main class="mdl-layout__content">
+	    	<div class="page-content main-layout">
+	    	<!-- Your content goes here -->
+				{{> Template.dynamic template=main}}
+				
+			</div>
+					<!--{{> Footer}}-->
+		  </main>
+		  
+  </div>
+</template>

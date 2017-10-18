@@ -1,0 +1,19 @@
+<template name="Programacion">
+	<div class='recipe {{#if editMode}}bounceInDown animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend{{/if}}'>
+		<h3>{{nombre}}</h3>
+		<p>{{estado}}</p>		
+		{{#if editMode}} 
+			{{> quickForm collection="Programacion" id=updateProgramacionId type="update" doc=this autosave=true}}
+		{{/if}}
+		<i class="fa fa-pencil"></i>
+		<i class="fa fa-trash"></i>
+	</div>
+</template>
+
+<template name="NuevoProgramacion">
+	<div  class="new-recipe-containter">
+	<h3>Nuevo Programacion</h3>
+	<i class="fa fa-close"></i>
+		{{> quickForm collection="Programacion" id="insertProgramacionForm" type="insert" class="new-recipe-form" buttonContent="Agregar Programacion" }}
+	</div>
+</template>

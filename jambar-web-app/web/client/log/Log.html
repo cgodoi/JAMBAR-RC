@@ -1,0 +1,35 @@
+<template name="Log">
+{{#if Template.subscriptionsReady}}
+<h3 class="subtituloDash">Log eventos modulos</h3>
+<table class="centered responsive-table">
+ <thead>
+   <tr>
+    <th>Origen</th>
+    <th>Modulo</th>
+    <th>Valor</th>
+    <th>Fecha</th>
+    <th>Ejecutado</th>
+	<th>mensaje</th>
+    <th>Fecha Ejecutado</th>
+  </tr>
+   </thead>
+
+   <tbody>
+  
+	{{#each log in moduloLogs}}
+		<tr>
+			<td>{{log.origen}} </td>
+			<td>{{log.moduloID}}  </td>
+			<td>{{log.valor}} </td>
+			<td>{{momentFmt log.fechaOrigen}} </td>
+			<td>{{log.ejecutado}} </td>
+			<td>{{log.mensaje}} </td>
+			<td>{{momentFmt log.fechaEjecuta}} </td>
+		</tr>
+	{{/each}}
+	</tbody>
+</table>
+ {{else}}
+	{{> loadingTemplate}}
+{{/if}}
+</template>

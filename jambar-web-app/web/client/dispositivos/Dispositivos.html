@@ -1,0 +1,31 @@
+<template name="Dispositivos">
+{{#if Template.subscriptionsReady}}
+<div class='ParametrosSeparador'>
+	{{#if $.Session.get 'nuevoDispositivo'}}
+	{{else}}
+		<button class="new-recipe pull-right mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect fadeIn animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend"><i class="fa fa-plus"></i></button>
+	{{/if}}
+	<h3 class="subtituloDash">Dispositivos</h3>
+</div>
+	{{#if $.Session.get 'nuevoDispositivo'}}
+		<div class="zoomIn animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend">
+			{{> NuevoDispositivo}}
+		</div>
+	{{/if}}
+
+	<section class='recipes fadeIn animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend'>
+		<div class="mdl-grid">
+			{{ #each dispositivos}}
+				<div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+				{{> Dispositivo}}
+				</div>
+			{{else}}
+				<h4>No existen dispositivos</h4>	
+			{{/each}}
+		</div>
+	</section>
+{{else}}
+		{{> loadingTemplate}}
+{{/if}}	
+
+</template>

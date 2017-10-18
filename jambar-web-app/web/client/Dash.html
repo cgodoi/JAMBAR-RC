@@ -1,0 +1,84 @@
+<template name="Dash">
+<div class="mdl-grid">
+{{#if Template.subscriptionsReady}}
+	{{#each myDashDevices}}
+		{{#if compare mTipoDispositivo.codigo 'LED'}}
+				{{> LedTemplate}}
+		{{/if}}
+		{{#if compare mTipoDispositivo.codigo 'IPCAMS'}}
+				{{> IpCamsTemplate}}
+		{{/if}}
+	{{else}}
+				<h4> No se han incluido <a href="/dispositivos">dispositivos</a> al dashboardo</h4>		
+	{{/each}} 
+ {{else}}
+		{{> loadingTemplate}}
+{{/if}}	
+</div>
+</template>
+
+<template name="LedTemplate">
+		  <div class="{{mDispositivo._id}}_1 mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+			<div class="{{mDispositivo._id}} recipe dash-item {{#if mDispoActivo}}in-menu tada{{/if}} 
+			            animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend">
+				<div class="dash-item1">
+  						<i class="{{mTipoDispositivo.icono}}"></i>
+				  <p class=" mdl-typography--headline">{{mDispositivo.nombre}}</p>
+				  {{#if mActividad}}
+							<p>{{mDispoEstado}} desde {{mActividad.origen}}  </p>
+							<p>{{momentFmt mActividad.fechaEjecuta}}</p>
+				  	{{else}}
+							<p>Sin Actividad</p>
+				  {{/if}}
+	  			</div>
+			</div>
+		</div>
+</template>
+
+<template name="IpCamsTemplate">
+		  <div class="{{mDispositivo._id}}_1 mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+			<div class="{{mDispositivo._id}} recipe dash-item {{#if mDispoActivo}}in-menu tada{{/if}} 
+			            animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend">
+				<div class="dash-item1">
+  						<i class="{{mTipoDispositivo.icono}}"></i>
+				  <p class=" mdl-typography--headline">{{mDispositivo.nombre}}</p>
+						{{> DashIpCam}}
+	  			</div>
+			</div>
+		</div>
+</template>
+
+<template name="DashIpCam">
+	<style>
+	{{cssCamIp mDispositivo}} 
+	</style>
+	{{#each mDispositivo.caracteristicas}}	
+		{{#if compare nombre 'camsrc'}}
+		{{/if}}
+		{{#if compare nombre 'camBtnIzq'}}
+		<button class="cambtns mdl-button mdl-js-button mdl-button--icon" value="{{valor}}">
+		<i class="la fa fa-arrow-left" aria-hidden="true"></i>
+		</button>
+		{{/if}}
+		{{#if compare nombre 'camBtnArr'}}
+		<button class="cambtns mdl-button mdl-js-button mdl-button--icon" value="{{valor}}">
+		<i class="la fa fa-arrow-up" aria-hidden="true"></i>
+		</button>
+		{{/if}}
+		{{#if compare nombre 'camBtnAbj'}}
+		<button class="cambtns mdl-button mdl-js-button mdl-button--icon"  value="{{valor}}">
+		<i class="fa fa-arrow-down" aria-hidden="true"></i>
+		</button>
+		{{/if}}
+		{{#if compare nombre 'camBtnDer'}}
+		<button class="cambtns mdl-button mdl-js-button mdl-button--icon"  value="{{valor}}">
+			<i class="fa fa-arrow-right" aria-hidden="true"></i>
+			</button>
+		{{/if}}
+		{{#if compare nombre 'camBtnStop'}}
+		<button class="cambtns mdl-button mdl-js-button mdl-button--icon"  value="{{valor}}">
+			<i class="fa fa-stop" aria-hidden="true"></i>
+		</button>
+		{{/if}}
+	{{/each}}
+</template>

@@ -1,0 +1,29 @@
+<template name="Dispositivo">
+	<div class='recipe fadeIn {{#if inDashboard}}in-menu{{/if}}'>
+<h3>{{nombre}}</h3>
+
+		<a href="/dispositivo/{{_id}}">Ver mas</a>
+			<a class="waves-effect waves-light btn-large">Button</a>
+		{{#if editMode}} 
+			{{> quickForm collection="Dispositivos" id=updateDispositivoId type="update" doc=this autosave=true buttonContent="Actualizar Dispositivo"}}
+		<!-- {{else}}
+			<p>
+			{{ #each caracteristicas}}
+				<span class="ingredient">{{nombre}} - {{valor}}</span>
+			{{/each}}
+			</p> -->
+		{{/if}}
+			{{#if inDashboard}}
+				<i class="fa fa-ban toggle-menu"></i> 
+			{{else}} 
+				<i class="fa fa-check toggle-menu"></i> 
+			{{/if}}
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" class="btn btn-default">Left</button>
+				<button type="button" class="btn btn-default">Middle</button>
+				<button type="button" class="btn btn-default">Right</button>
+			</div>
+			<i class="fa fa-pencil"></i>
+			<i class="fa fa-trash"></i>
+	</div>
+</template>

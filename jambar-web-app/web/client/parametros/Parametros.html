@@ -1,0 +1,119 @@
+<template name="Parametros">
+{{#if Template.subscriptionsReady}}
+<section class='sectionParams'>
+	<div class='ParametrosSeparador'>
+
+{{#if $.Session.get 'nuevoProgramacion'}}
+		{{else}}
+		<button id="btnNuevoProgramacion" class="new-recipe sector pull-right  mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect fadeIn animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend" data-tooltip="I'm a tooltip!" ><i class="fa fa-plus"></i></button>
+{{/if}}
+<h3 class="subtituloDash">Programacion</h3>
+</div>
+
+	{{#if $.Session.get 'nuevoProgramacion'}}
+		<div class="zoomIn animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend">
+			{{> NuevoProgramacion}}
+		</div>
+	{{/if}}
+
+<div class="mdl-grid">
+		{{ #each programacion}}
+			<div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+			{{> Programacion}}
+			</div>
+			{{else}}
+			<h4>No existen Programaciones </h4>				
+		{{/each}}
+</div>			
+
+</section>
+
+
+	<section class='sectionParams'>
+		<div class='ParametrosSeparador'>
+
+	{{#if $.Session.get 'nuevoSector'}}
+			{{else}}
+			<button id="btnNuevoSector" class="new-recipe sector pull-right  mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect fadeIn animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend" data-tooltip="I'm a tooltip!" ><i class="fa fa-plus"></i></button>
+	{{/if}}
+	<h3 class="subtituloDash">Sectores</h3>
+	</div>
+
+		{{#if $.Session.get 'nuevoSector'}}
+			<div class="zoomIn animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend">
+				{{> NuevoSector}}
+			</div>
+		{{/if}}
+
+	<div class="mdl-grid">
+			{{ #each sectores}}
+				<div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+				{{> Sector}}
+				</div>
+				{{else}}
+				<h4>No existen sectores </h4>				
+			{{/each}}
+	</div>			
+
+	</section>
+
+	<section class='sectionParams'>
+		<div class='ParametrosSeparador'>
+	{{#if $.Session.get 'nuevoModulo'}}
+	{{else}}
+			<button id="btnNuevoModulo" class="new-recipe Modulo pull-right  mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect fadeIn animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend"><i class="fa fa-plus"></i></button>
+  			<button id="btnEscanearModulos" class="new-recipe Modulo pull-right  mdl-button mdl-js-button mdl-button--raised mdl-button--accent  mdl-js-ripple-effect fadeIn animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend"><i class="fa fa-cogs"></i></button>	
+	{{/if}}
+
+	<h3 class="subtituloDash">Modulos</h3>
+	</div>
+		{{#if $.Session.get 'Cargando'}}
+				{{> loadingTemplate}}
+			<h6>Buscando Nuevos modulos</h6>
+		{{/if}}
+	{{#if $.Session.get 'nuevoModulo'}}
+		<div class="zoomIn animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend">
+		{{> NuevoModulo}}
+		</div>
+	{{/if}}
+	<div class="mdl-grid">
+			{{ #each modulos}}
+				<div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+				{{> Modulo}}
+				</div>
+				{{else}}
+				<h4>No existen modulos </h4>
+			{{/each}}
+	</div>
+	</section>
+
+	<section class='sectionParams'>
+	
+		<div class='ParametrosSeparador'>
+	{{#if $.Session.get 'nuevoTipoDispositivo'}}
+	{{else}}
+		<button id="btnNuevoTipoDispositivo" class="tipoDispositivo pull-right  mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect fadeIn animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend"><i class="fa fa-plus"></i></button>
+	{{/if}}
+	<h3 class="subtituloDash">Tipo Dispositivos</h3>
+	</div>
+	{{#if $.Session.get 'nuevoTipoDispositivo'}}
+		<div class="zoomIn animated webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend">
+		{{> NuevoTipoDispositivo}}
+		</div>
+	{{/if}}
+		<div class="mdl-grid">
+			{{ #each tipoDispositivos}}
+				<div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+				{{> TipoDispositivo}}
+				</div>
+			{{else}}
+				<h4>No existen tipos de dispositivos </h4>					
+			{{/each}}
+		</div>
+	</section>
+
+{{else}}
+		{{> loadingTemplate}}
+{{/if}}
+
+</template>

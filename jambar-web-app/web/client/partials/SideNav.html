@@ -1,0 +1,40 @@
+<template name="SideNav">
+<!-- Always shows a header, even in smaller screens. -->
+
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Jambar.RC.1</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+      </nav>
+  
+      <!-- Right aligned menu below button -->
+      <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+        <i  class="fa fa-user" aria-hidden="true"></i>
+      </button>
+
+      <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+          for="demo-menu-lower-right">
+        <li class="mdl-menu__item changepass">    
+          {{#each currentUser.emails}}
+              {{address}}
+          {{/each}}</li>
+        <li class="mdl-menu__item logout">Sign out</li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Options</span>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link" href="/dash">Dashboard</a>
+      <a class="mdl-navigation__link" href="/dispositivos">Dispositivos</a>
+      <a class="mdl-navigation__link" href="/parametros">Configuracion</a>
+      <a class="mdl-navigation__link" href="/log">Registro log</a>
+    </nav>
+  </div>
+ 
+</template>
